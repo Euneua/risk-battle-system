@@ -5,11 +5,10 @@ public class Main {
     
     public static int rollDice() {
         Random random = new Random();
-        return random.nextInt(6) + 1;  // Number between 1 and 6
+        return random.nextInt(6) + 1;
     }
     
     public static double calculateWinProbability(int attacker, int defender) {
-        // Monte-Carlo simulation
         if (attacker <= 1) return 0.0;
         if (defender == 0) return 100.0;
         
@@ -26,12 +25,10 @@ public class Main {
     }
     
     public static boolean simulateBattle(int attacker, int defender) {
-        // Simulate a complete battle
         while (attacker > 1 && defender > 0) {
             int aRoll1 = 0, aRoll2 = 0, aRoll3 = 0;
             int dRoll1 = 0, dRoll2 = 0;
             
-            // Attacker rolls
             if (attacker == 2) {
                 aRoll1 = rollDice();
             } else if (attacker == 3) {
@@ -43,7 +40,6 @@ public class Main {
                 aRoll3 = rollDice();
             }
             
-            // Defender rolls
             if (defender == 1) {
                 dRoll1 = rollDice();
             } else if (defender >= 2) {
@@ -51,9 +47,7 @@ public class Main {
                 dRoll2 = rollDice();
             }
             
-            // Comparison
             if (attacker >= 3 && defender >= 2) {
-                // Both have 2+ dice
                 int[] aRolls = {aRoll1, aRoll2, aRoll3};
                 java.util.Arrays.sort(aRolls);
                 int aHighest = aRolls[2];
@@ -62,21 +56,18 @@ public class Main {
                 int dHighest = Math.max(dRoll1, dRoll2);
                 int dLowest = Math.min(dRoll1, dRoll2);
                 
-                // Comparison 1
                 if (aHighest > dHighest) {
                     defender--;
                 } else {
                     attacker--;
                 }
                 
-                // Comparison 2
                 if (aSecondHighest > dLowest) {
                     defender--;
                 } else {
                     attacker--;
                 }
             } else {
-                // Only one comparison
                 int aHighest = Math.max(Math.max(aRoll1, aRoll2), aRoll3);
                 int dHighest = Math.max(dRoll1, dRoll2);
                 
@@ -112,7 +103,6 @@ public class Main {
             
             System.out.println("\n" + attacker + " Attacker vs " + defender + " Defender");
             
-            // Calculate win probability
             double winProbability = calculateWinProbability(attacker, defender);
             System.out.printf("Win probability: %.1f%%\n", winProbability);
             
@@ -124,7 +114,6 @@ public class Main {
                 return;
             }
             
-            // Battle loop
             while (attacker > 1 && defender > 0) {
                 int aRoll1 = 0;
                 int aRoll2 = 0;
@@ -132,7 +121,6 @@ public class Main {
                 int dRoll1 = 0;
                 int dRoll2 = 0;
                 
-                // Attacker rolls
                 if (attacker == 2) {
                     aRoll1 = rollDice();
                 } else if (attacker == 3) {
@@ -144,7 +132,6 @@ public class Main {
                     aRoll3 = rollDice();
                 }
                 
-                // Defender rolls
                 if (defender == 1) {
                     dRoll1 = rollDice();
                 } else if (defender >= 2) {
@@ -158,7 +145,6 @@ public class Main {
                 System.out.println("D-Roll1: " + dRoll1);
                 System.out.println("D-Roll2: " + dRoll2);
                 
-                // Comparison
                 if (attacker >= 3 && defender >= 2) {
                     int[] aRolls = {aRoll1, aRoll2, aRoll3};
                     java.util.Arrays.sort(aRolls);
@@ -217,6 +203,6 @@ public class Main {
                 System.out.println("The attack has failed!");
                 System.out.println("Remaining defenders: " + defender);
             }
-        } // scanner wird automatisch geschlossen
+        }
     }
 }
