@@ -162,7 +162,7 @@ Some ideas for enhancements:
 
 ## Check It Out
 
-The full code is on GitHub: [risk-battle-system](https://github.com/Euneua/risk-battle-system)
+The full code is on GitHub: [risk-battle-system](https://github.com/Euneua/dice-battle-system)
 
 Pure Java, no dependencies, ready to run. Clone it, test different scenarios, and see for yourself why defending is so powerful in dice battle systems.
 
